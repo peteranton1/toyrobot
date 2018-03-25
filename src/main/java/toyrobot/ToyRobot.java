@@ -6,6 +6,7 @@ import toyrobot.domain.Direction;
 import toyrobot.domain.GridRef;
 import toyrobot.domain.Landscape;
 import toyrobot.domain.Vehicle;
+import toyrobot.service.CommandProcessor;
 
 /**
  * Main class for toy robot.
@@ -20,13 +21,16 @@ public class ToyRobot {
      * @param args
      */
     public static void main(String[] args) {
+
         Landscape landscape = new Landscape(0, 0,5, 5);
         Vehicle vehicle = new Vehicle(landscape,3,3, Direction.NORTH);
 
         if(args.length == 0){
             exampleVehicleMoves(vehicle);
         }else{
-            // TODO process commands here.
+            // Process input
+            CommandProcessor processor = new CommandProcessor();
+            processor.process(args[0],vehicle);
         }
     }
 
