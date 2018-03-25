@@ -34,9 +34,11 @@ public class CommandProcessor {
         boolean havePlaced = false;
 
         for(Command command:commands){
+            // Ignore commands until the first PLACE
             if(!havePlaced && command instanceof CommandPlace) {
                 havePlaced = true;
             }
+            // Once placed, execute commands sequentially.
             if(havePlaced){
                 command.execute(vehicle);
             }
